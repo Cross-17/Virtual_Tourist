@@ -18,15 +18,14 @@ class MapViewController: UIViewController,MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let longPressRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(pressLong(_:)))
-        
         longPressRecogniser.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(longPressRecogniser)
         mapView.delegate = self
         loadPinsFromDatabase()
         
     }
+    
     func pressLong(_ gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.state == UIGestureRecognizerState.began{
         let point = gestureRecognizer.location(in:mapView)
@@ -42,8 +41,8 @@ class MapViewController: UIViewController,MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    self.performSegue(withIdentifier: "showPhoto", sender: nil)
-    mapView.deselectAnnotation(view.annotation, animated: false)
+        performSegue(withIdentifier: "showPhoto", sender: nil)
+        mapView.deselectAnnotation(view.annotation, animated: false)
     }
     
     func loadPinsFromDatabase()

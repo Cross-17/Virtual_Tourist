@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class FlickrClient : NSObject {
+class FlickrClient {
     
     var session = URLSession.shared
     func getImageURL(_ lat: Double, lon: Double, completionHandlerForImage: @escaping (_ imageData: AnyObject?, _ error: NSError?) -> Void) -> URLSessionTask {
